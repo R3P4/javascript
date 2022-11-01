@@ -105,36 +105,41 @@ const superheroes = [
     "weight": "unknown"
     }
     ];
-   
-     const superHeroNames = superheroes.map(superheroes => superheroes.name ); 
-      const superHeroWeight = superheroes.filter(superheroes  =>  superheroes.weight < 190 );
-      const superHeroHeavyWeight = superheroes.filter(superheroes => superheroes.weight > 200 );
-      const superHeroFirstAppearance = superheroes.map(superheroes => superheroes.first_appearance + superheroes.name);
-     const superHeroPublisher = superheroes.filter(superheroes => superheroes.publisher === "DC Comics");
-     const superHeroOtherPublisher = superheroes.filter(superheroes => superheroes.publisher === "Marvel Comics");
-    const initialweight = 0 ;
-    
-    const superHeroDcComicsWeight = superHeroPublisher.reduce(( previousValue , currentValue )  => currentValue.weight + initialweight 
-     
-     );
-     const weight = superHeroOtherPublisher.weight !== "unknown" ? parseInt(superHeroOtherPublisher.weight,10) : 0;
-     
-     const superHeroMarvelComicsWeight = superHeroOtherPublisher.reduce(( previousValue , currentValue )  => 
-      previousValue.weight + currentValue.weight  , initialweight
-        
-     );
-     const superHeroMaxWeight = superheroes.filter(superheroes => superheroes.weight > 1000 );
+   // de namen van superheroes
+    const superHeroNames = superheroes.map(superheroes => superheroes.name ); 
+    //de superheroes onder de 190
+    const superHeroWeight = superheroes.filter(superheroes  =>  superheroes.weight < 190 );
+    // superhelden zwaarder dan 200
+    const superHeroHeavyWeight = superheroes.filter(superheroes => superheroes.weight > 200 );
+    //eerste keer verschenen in
+    const superHeroFirstAppearance = superheroes.map(superheroes => superheroes.first_appearance + superheroes.name);
+   //publisher DCComics selectie
+    const superHeroPublisher = superheroes.filter(superheroes => superheroes.publisher === "DC Comics");
+   //publisher MarvelComics
+   const superHeroOtherPublisher = superheroes.filter(superheroes => superheroes.publisher === "Marvel Comics");
+  //totaal gewicht superheroes DCComics
+   const initialweight = 0 ;
+  const superHeroDcComicsWeight = superHeroPublisher.reduce(( previousValue , currentValue )  => 
+       currentValue.weight + initialweight
+   );
+    //totaal gewicht van MarvelComics superheroes
+   const superHeroMarvelComicsWeight = superHeroOtherPublisher.map (superheroes => {
+      return superheroes.weight !== "unknown" ? parseInt(superheroes.weight, 10) : 0; })
+    .reduce ((previousValue , currentValue) => previousValue + currentValue  + initialweight ); 
+  //zwaarste superhero na verhogen waarde van 200 naar 400 en verder
+   const superHeroMaxWeight = superheroes.filter(superheroes => superheroes.weight > 1000);
 
 
-     console.log(superHeroNames); 
-     console.log(superHeroWeight); 
-     console.log(superHeroHeavyWeight); 
-     console.log(superHeroFirstAppearance);  
-     console.log(superHeroPublisher); 
-     console.log(superHeroOtherPublisher); 
-     console.log(superHeroDcComicsWeight);
-     console.log(superHeroMarvelComicsWeight);
-     console.log(superHeroMaxWeight);
+   console.log(superHeroNames); 
+   console.log(superHeroWeight); 
+   console.log(superHeroHeavyWeight); 
+   console.log(superHeroFirstAppearance);  
+   console.log(superHeroPublisher); 
+   console.log(superHeroOtherPublisher); 
+   console.log(superHeroDcComicsWeight);
+   console.log(superHeroMarvelComicsWeight);
+   console.log(superHeroMaxWeight);
+
 
      
      /*
